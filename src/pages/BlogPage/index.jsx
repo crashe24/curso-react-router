@@ -1,10 +1,25 @@
+import { BlogLink } from "../../components/BlogLink";
+import { blogData } from "../../fake/blogData";
+
+
 const BlogPage = () => {
+
+
     return (
-      <div>
-          <h2>Blog PAge</h2>
-      </div>
+      <>
+        <h2>Blog de pagina</h2>
+        <ul>
+          {blogData.map(post => {
+           return  <BlogLink key={post.slug} post={post}/>
+          })}
+
+        </ul>
+
+      </>
     );
   }
+  
+
   
   export { BlogPage };
   
