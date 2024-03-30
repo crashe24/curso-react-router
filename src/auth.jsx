@@ -1,14 +1,20 @@
 import React, { useContext, useState } from 'react'
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const AuthContext = React.createContext()
 
+// autorizacion 
+const listAdmin = ['jorgeLeon', 'gaelLeon', 'martinLeon']
+
 
 const AuthProvider = ({children}) =>  {
+    const navigate = useNavigate()
     const [user, setUser] = useState(null);
     
     const login = ({username}) =>{
-        setUser({username})
+        const isAdmin = listAdmin.find(admin => admin === username)
+        setUser({username, isAdmin})
+        navigate('/profile')
     }
     const logout = () =>{
         setUser(null)
